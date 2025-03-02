@@ -18,3 +18,46 @@ a {
 * {
   box-sizing: border-box;
 }
+
+/* Neumorphic UI styles */
+.neumorphic {
+  background: white;
+  border-radius: 0.75rem;
+  box-shadow: 
+    20px 20px 60px rgba(0, 0, 0, 0.05),
+    -20px -20px 60px rgba(255, 255, 255, 0.8);
+}
+
+.neumorphic-inset {
+  background: white;
+  border-radius: 0.75rem;
+  box-shadow: 
+    inset 8px 8px 16px rgba(0, 0, 0, 0.05),
+    inset -8px -8px 16px rgba(255, 255, 255, 0.8);
+}
+
+.neumorphic-button {
+  border-radius: 0.75rem;
+  box-shadow: 
+    5px 5px 10px rgba(0, 0, 0, 0.05),
+    -5px -5px 10px rgba(255, 255, 255, 0.8);
+  transition: all 0.2s ease;
+}
+
+.neumorphic-button:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 
+    6px 6px 12px rgba(0, 0, 0, 0.05),
+    -6px -6px 12px rgba(255, 255, 255, 0.8);
+}
+
+.neumorphic-button:active:not(:disabled) {
+  transform: translateY(1px);
+  box-shadow: 
+    inset 5px 5px 10px rgba(0, 0, 0, 0.05),
+    inset -5px -5px 10px rgba(255, 255, 255, 0.8);
+}
+
+.neumorphic-button-secondary {
+  background: white;
+}

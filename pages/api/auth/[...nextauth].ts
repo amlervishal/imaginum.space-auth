@@ -5,6 +5,9 @@ import jwt from "jsonwebtoken";
 // Allowed email addresses from environment variable
 const allowedEmails = (process.env.ALLOWED_EMAILS || "").split(",").map(email => email.trim());
 
+// Force NEXTAUTH_URL to be localhost for local development
+const baseUrl = process.env.NEXTAUTH_URL || "http://localhost:3000";
+
 export const authOptions: NextAuthOptions = {
   providers: [
     GoogleProvider({
@@ -50,6 +53,19 @@ export const authOptions: NextAuthOptions = {
         session.customToken = customToken;
       }
       return session;
+    },
+    // Critical: Make sure the redirect is always to the correct URL
+    async redirect({ url, baseUrl }) {
+      // Log for debugging
+      console.log('Redirect called:', { url, baseUrl });
+      
+      // Always redirect to localhost in development
+      if (process.env.NODE_ENV === 'development') {
+        return 'http://localhost:3000';
+      }
+      
+      // For production, use the configured base URL
+      return baseUrl;
     }
   },
   pages: {
@@ -60,7 +76,23 @@ export const authOptions: NextAuthOptions = {
     strategy: "jwt",
     maxAge: 12 * 60 * 60, // 12 hours
   },
-  secret: process.env.NEXTAUTH_SECRET
+  secret: process.env.NEXTAUTH_SECRET,
+  
+  // Override URLs
+  useSecureCookies: process.env.NODE_ENV === 'production',
+  cookies: {
+    sessionToken: {
+      name: process.env.NODE_ENV === 'production' 
+        ? `__Secure-next-auth.session-token` 
+        : `next-auth.session-token`,
+      options: {
+        httpOnly: true,
+        sameSite: 'lax',
+        path: '/',
+        secure: process.env.NODE_ENV === 'production',
+      }
+    }
+  }
 };
 
 export default NextAuth(authOptions);
