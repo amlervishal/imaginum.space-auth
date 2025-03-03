@@ -3,6 +3,7 @@ import type { AppProps } from 'next/app';
 import { SessionProvider } from "next-auth/react";
 import { useEffect } from 'react';
 import { checkRequiredEnvVars } from '../lib/check-env';
+import { syne } from '../lib/fonts';
 
 // Run env check in development
 if (process.env.NODE_ENV === 'development') {
@@ -25,7 +26,9 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
 
   return (
     <SessionProvider session={session}>
-      <Component {...pageProps} />
+      <div className={`${syne.variable} font-sans`}>
+        <Component {...pageProps} />
+      </div>
     </SessionProvider>
   );
 }

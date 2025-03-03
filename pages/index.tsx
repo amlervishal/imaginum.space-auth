@@ -87,7 +87,7 @@ const Home = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col" style={{ backgroundColor: '#FAF0ED' }}>
+    <div className="min-h-screen flex flex-col font-sans">
       <Head>
         <title>imaginum.space - Login</title>
       </Head>
@@ -104,11 +104,7 @@ const Home = () => {
           </div>
 
           <div className="max-w-md mx-auto">
-            <div className="neumorphic p-6" style={{
-              background: 'white',
-              borderRadius: '0.75rem',
-              boxShadow: '20px 20px 60px rgba(0, 0, 0, 0.05), -20px -20px 60px rgba(255, 255, 255, 0.8)'
-            }}>
+            <div className="neumorphic p-6">
               {error && (
                 <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
                   {error}
@@ -117,7 +113,7 @@ const Home = () => {
 
               {loading ? (
                 <div className="text-center py-4">
-                  <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gray-900 mx-auto mb-4"></div>
+                  <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#543d27] mx-auto mb-4"></div>
                   <p className="text-[#543d27]/70">Authenticating your access...</p>
                 </div>
               ) : status === "authenticated" && session ? (
@@ -127,7 +123,7 @@ const Home = () => {
                   <div className="space-y-4 mb-8">
                     <button
                       onClick={launchStableDiffusion}
-                      className="w-full py-6 font-medium text-[#543d27] neumorphic-button"
+                      className="w-full py-6 font-medium text-[#543d27] neumorphic-button accent-bg"
                       style={{ background: '#fac9b8' }}
                     >
                       Launch Stable Diffusion
@@ -135,7 +131,7 @@ const Home = () => {
                     
                     <button
                       onClick={launchPromptGenerator}
-                      className="w-full py-6 font-medium text-[#543d27] neumorphic-button"
+                      className="w-full py-6 font-medium text-[#543d27] neumorphic-button accent-bg"
                       style={{ background: '#fac9b8' }}
                     >
                       Launch Prompt Generator

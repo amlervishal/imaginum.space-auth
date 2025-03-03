@@ -1,0 +1,38 @@
+.neumorphic {
+  background: white !important;
+  border-radius: 0.75rem !important;
+  box-shadow: 
+    20px 20px 60px rgba(0, 0, 0, 0.05),
+    -20px -20px 60px rgba(255, 255, 255, 0.8) !important;
+}
+
+.neumorphic-inset {
+  background: white !important;
+  border-radius: 0.75rem !important;
+  box-shadow: 
+    inset 8px 8px 16px rgba(0, 0, 0, 0.05),
+    inset -8px -8px 16px rgba(255, 255, 255, 0.8) !important;
+}
+
+.neumorphic-button {
+  border-radius: 0.75rem !important;
+  box-shadow: 
+    5px 5px 10px rgba(0, 0, 0, 0.05),
+    -5px -5px 10px rgba(255, 255, 255, 0.8) !important;
+  transition: all 0.2s ease !important;
+}
+
+.neumorphic-button:hover:not(:disabled) {
+  transform: translateY(-1px) !important;
+  box-shadow: 
+    6px 6px 12px rgba(0, 0, 0, 0.05),
+    -6px -6px 12px rgba(255, 255, 255, 0.8) !important;
+}
+
+.neumorphic-button-secondary {
+  background: white !important;
+}
+
+body {
+  background-color: #FAF0ED !important;
+}
